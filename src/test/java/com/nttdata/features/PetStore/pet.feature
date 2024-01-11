@@ -6,7 +6,6 @@ Feature: Admin Pet Store
     * url 'https://petstore.swagger.io/v2'
     * def structPet = read("structPet.json")
 
-  @ignore
   Scenario Outline: Add new pet Successfully
     * copy bodyPet = __row
     # Ingresar mascota

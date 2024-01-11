@@ -1,0 +1,4 @@
+Conclusión: Las pruebas realizadas en el sistema de la tienda PetStore arrojaron resultados positivos, demostrando la capacidad del sistema para ejecutar operaciones como la adición de mascotas, consultas por ID, actualizaciones y búsquedas basadas en el estatus.
+
+Recomendaciones: Los escenarios deben ser lo más independientes posible. Aunque pude generar cuatro casos de prueba, la descripción indicaba que debía utilizar el resultado anterior, por lo que es buena práctica manejar las peticiones necesarias en un solo escenario con el fin de mantener la granularidad.
+Adicionalmente, utilice escenarios outline con la finalidad de probar con cualquier cantidad de data con la finalidad de cubrir mas casos de prueba.
