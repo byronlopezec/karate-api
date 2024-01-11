@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+ext {
+    karateVersion = '1.4.1'
+    masterThoughtVersion = '3.8.0'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.15.1'
+    testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
+    testImplementation 'net.masterthought:cucumber-reporting:' + masterThoughtVersion
+}
+
+sourceSets {
+    test {
+        java {
+            srcDir file('src/test/java')
+        }
+        resources {
+            srcDir file('src/test/java')
+            exclude '**/*.java'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    include '**/*RunnerApi*'
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false }
+}
+
+repositories {
+    mavenCentral()
+    // mavenLocal()
+}
+
+task karateDebug(type: JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    main = 'com.intuit.karate.cli.Main'
+}
